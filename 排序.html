@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>排序</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//1.冒泡算法：两个两个数拿出 做比较，再加一个新变量，将两个数互换
+		function maopao(arr){
+			for(var i=0;i<arr.length-1;i++){
+				for(var j=0;j<arr.length-1-i;j++){
+					if(arr[j]>arr[j+1]){
+						var item =arr[j];//互换两个数
+						arr[j]=arr[j+1];
+						arr[j+1] = item;
+					}
+				}
+			}
+			return arr;
+		}
+		var arr=[1,10,5,6,8,3,25];
+		console.log(maopao(arr));
+		//2.插入排序
+		function charu(arr1){
+			for (var i=1;i<arr1.length;i++){
+				var key = arr1[i];//key=44；key=38;
+				var j=i-1;//j=0；j=1
+				while(arr1[j]>key){//3!>44；44>38 执行循环；
+					arr1[j+1]=arr1[j];//将前边的大数赋值给后边的小数arr[2]=44，数组变为[3,44,44...];
+					j--;//j=0;
+				}
+				arr1[j+1]=key;//数组不变;数组变为[3,38,44...]
+			}
+			return arr1;
+		}
+		var arr1=[3,44,38,5,47,15,36,26,27,2,46,4]
+		console.log(charu(arr1));
+		//3.选择排序
+		function xuanze(arr) {
+　　　　var minIndex, temp;
+　　　　for (var i = 0; i < arr.length - 1; i++) {
+　　　　　　minIndex = i;
+　　　　　　for (var j = i + 1; j < arr.length; j++) {
+　　　　　　if (arr[j] < arr[minIndex]) { //寻找最小的数
+　　　　　　　　minIndex = j; //将最小数的索引保存
+　　　　　　}
+　　　　}
+　　　　temp = arr[i];//将最小的值放在前边
+　　　　arr[i] = arr[minIndex];
+　　　　arr[minIndex] = temp;
+　　}
+　　return arr;
+	}
+	var arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];
+	console.log(xuanze(arr));
+
+	</script>
+	
+</body>
+</html>
