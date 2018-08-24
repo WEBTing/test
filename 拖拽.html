@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		#box{
+			width: 100px;
+			height: 30px;
+			line-height:30px;
+			background-color: pink;
+			border-radius: 8px;
+			text-align: center;
+			cursor: pointer;
+		}
+		#rap{
+			display: none;
+			background:rgba(0,0,0,0.3);
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
+		#pop{
+			position: absolute;
+			width: 200px;
+			height: 100px;
+			background-color: pink;
+		}
+		#yes,#no{
+			width: 50px;
+			height: 20px;
+			line-height: 20px;
+			text-align: center;
+			background-color: yellow;
+			border-radius: 5px;
+			position: relative;
+			left: 140px;
+			top:30px;
+			margin-top: 5px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">点击</div>
+	<div id="rap">
+		<div id="pop"> 确定关闭么？<div id="yes">确定 </div><div id="no">取消</div></div>
+	</div>
+	<script type="text/javascript">
+		var box_div = getDom('#box');
+		var rap_div = getDom('#rap');
+		var pop_div = getDom('#pop');
+//======================================
+		box_div.onclick=function(){
+			pop_div.style.left=(document.documentElement.clientWidth-parseInt(getStyle(pop_div).width))/2+'px';
+			pop_div.style.top=(document.documentElement.clientHeight-parseInt(getStyle(pop_div).height))/2+'px';
+			rap_div.style.display='block';
+		}
+		rap.onclick=function(e){
+			if(e.target.id =='yes'){
+				this.style.display='none';
+			}
+		}
+		pop.onmousedown=function(e){
+			var ox=e.clientX,oy=e.clientY;
+			var ol=pop_div.offsetLeft,ot=pop_div.offsetTop;
+			pop.onmousemove=function(e){
+				var sl=e.clientX-ox;
+				var st=e.clientY-oy;
+				pop_div.style.left=ol+sl+'px';
+				pop_div.style.top=ot+st+'px';
+			}
+
+		}
+		pop.onmouseup=function(){
+			pop.onmousemove=null;
+		}
+//==============================
+	function getDom(dom){
+	return document.querySelector(dom);
+}
+	function getStyle(dom){
+		return window.getComputedStyle?window.getComputedStyle(dom,null):dom.currenStyle;
+	}
+	</script>
+	
+</body>
+</html>
