@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script >
+	// 	var xhr=new XMLHttpRequest();
+	// 	xhr.onreadystatechange=function(){
+	// 	if(xhr.readyState==4){
+	// 		if(xhr.status>=200&&xhr.status<300||xhr.status==304){
+	// 			var str=JSON.parse(xhr.responseText);
+	// 			console.log(str);
+	// 		}else{
+
+	// 		}
+	// 	}
+	// }
+	// xhr.open('get','6.22.json',true);
+	// xhr.send(null);
+
+
+	// function a(s){
+	// 	console.log(s);
+	// }
+	// var script=document.createElement('script');
+	// script.src='6.22.json/?callback=a';
+	// document.body.insertBefore(script,document.body.firstChild);
+	function creatCat(name,age){
+		var o=new Object();
+		o.name=name;
+		o.age=age;
+		o.eat=function(){
+			console.log(1);
+		}
+		return o;
+	}
+	var cat1=creatCat('tpm',9);
+	console.log(cat1);
+	//原型
+	function Cat(){}//构造函数
+	Cat.prototype.name='tom';
+	Cat.prototype.age=5;
+	Cat.prototype.eat=function(){
+		console.log(5);
+	}
+	var cat2=new Cat();//实例
+	cat2.eat();
+	console.log(cat2.name);
+	</script>
+</body>
+</html>
