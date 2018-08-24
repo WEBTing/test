@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<div id=show></div>
+	<div id=show1></div>
+	<script type="text/javascript">
+		setInterval(function(){
+		var newDate = new Date();  
+        var newDate1 = new Date(2018,4,26,9,30,00);  
+        var leftTime = newDate1 - newDate; 
+        var hadTime = newDate -newDate1;  
+        var days = parseInt(leftTime / 1000 / 60 / 60 / 24 ); //计算剩余的天数  
+        var hours = parseInt(leftTime / 1000 / 60 / 60 % 24 ); //计算剩余的小时   
+        var minutes = parseInt(leftTime / 1000 / 60 % 60);//计算剩余的分钟   
+        var seconds = parseInt(leftTime / 1000 % 60);//计算剩余的秒数
+		
+		var days1 = parseInt(hadTime / 1000 / 60 / 60 / 24 ); //计算超过的天数  
+        var hours1 = parseInt(hadTime / 1000 / 60 / 60 % 24 ); //计算超过的小时   
+        var minutes1 = parseInt(hadTime / 1000 / 60 % 60);//计算超过的分钟   
+        var seconds1 = parseInt(hadTime / 1000 % 60);//计算超过的秒数
+
+ 		if(seconds>0){	
+ 		
+		document.getElementById("show").innerHTML = '距下次上课时间还有'+':'+days+':'+hours+':'+minutes+':'+seconds;//显示
+	}else{
+		
+		document.getElementById("show1").innerHTML = '已上课'+':'+days1+':'+hours1+':'+minutes1+':'+seconds1;//显示
+	}
+
+},1000);
+	</script>
+		
+
+</body>
+</html>
